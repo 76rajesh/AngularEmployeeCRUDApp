@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <h3 class="text-center"> Update Employee </h3>
+        <div class="row">  
+            <hr />
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()"  [formGroup]="employeeinfo">
+                    <div class="form-group">
+                        <label> Employee Name</label>
+                       <input formControlName="name" type="text" class="form-control" id="name" required [(ngModel)]="employee.name"
+                            name="name" >
+                            <small *ngIf="employeeinfo.controls['name'].touched && employeeinfo.controls['name'].invalid" class="text-danger">Name is Required (Min Length is 3)</small>
+                    </div>
+                      <div class="form-group">
+                        <label> Location</label>
+                        <select class="form-control" id="location" required [(ngModel)]="employee.location"
+                        name="location" formControlName="location" >
+                            <option value="Chennai">Chennai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                          </select>
+                          <small *ngIf="employeeinfo.controls['location'].touched && employeeinfo.controls['location'].invalid" class="text-danger">Location is Required to select </small>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label> Email Id</label>
+                        <input type="text" class="form-control" id="emailId" required  [(ngModel)]="employee.emailId"
+                           name="emailId" formControlName="emailId" >
+                            <small *ngIf="employeeinfo.controls['emailId'].touched && employeeinfo.controls['emailId'].invalid" class="text-danger">E-mailId is Required </small>
+
+                    </div>
+                    <div class="form-group">
+                        <label> Mobile No</label>
+                        <input type="text" class="form-control" id="mobileno" required [(ngModel)]="employee.mobileno"
+                            name="mobileno" formControlName="mobileno" >
+                            <small *ngIf="employeeinfo.controls['mobileno'].touched && employeeinfo.controls['mobileno'].invalid" class="text-danger">Mobile No is Required 10 digits only allowed </small>
+
+                    </div>
+    <br />           
+
+                    <button class="btn btn-success" [disabled]="employeeinfo.invalid" type="submit">Update</button>
+                    <button type="submit" class="btn btn-secondary" style="margin-left: 15px" (click)="goToEmployeeList()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
